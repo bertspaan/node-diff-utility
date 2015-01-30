@@ -1,6 +1,6 @@
 {
   "name": "diff-utility",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Calls diff utility and outputs differences as JS objects",
   "main": "index.js",
   "scripts": {
