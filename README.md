@@ -20,9 +20,9 @@ diff(filename1, filename2)
 
 ## Example
 
-This example shows the output of `node-diff-utility` comparing two [ndjson](http://ndjson.org/) files.
+This example shows the output of `node-diff-utility` comparing two [ndjson](http://ndjson.org/) files, `file1` and `file2`.
 
-Contents of file 1:
+Contents of `file1`:
 
 ```js
 {"id": 1, "name": "Amsterdam", "type": "place"}
@@ -30,7 +30,7 @@ Contents of file 1:
 {"id": 3, "name": "Rotterdam", "type": "place"}
 ```
 
-Contents of file 2:
+Contents of `file2`:
 
 ```js
 {"id": 1, "name": "Amsterdam", "type": "place"}
@@ -56,4 +56,15 @@ Output:
   line: 4,
   type: 'in',
   str: '{"id": 5, "name": "Eindhoven", "type": "place"}' }
+```
+
+Original output of system's `diff` utility:
+
+```
+$ diff file1 file2
+2d1
+< {"id": 2, "name": "Utrecht", "type": "place"}
+3a3,4
+> {"id": 4, "name": "Den Haag", "type": "place"}
+> {"id": 5, "name": "Eindhoven", "type": "place"}
 ```
