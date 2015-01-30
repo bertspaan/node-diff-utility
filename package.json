@@ -1,0 +1,26 @@
+{
+  "name": "diff-utility",
+  "version": "0.0.1",
+  "description": "Calls diff utility and outputs differences as JS objects",
+  "main": "index.js",
+  "scripts": {
+    "test": "tap test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/erfgoed-en-locatie/node-diff-utility"
+  },
+  "keywords": [
+    "diff"
+  ],
+  "author": "Bert Spaan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/erfgoed-en-locatie/node-diff-utility/issues"
+  },
+  "homepage": "https://github.com/erfgoed-en-locatie/node-diff-utility",
+  "dependencies": {
+    "split2": "^0.2.1",
+    "through2": "^0.6.3"
+  }
+}
