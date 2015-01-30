@@ -5,7 +5,7 @@ Compares two files using the system's [`diff` utility](http://en.wikipedia.org/w
 Usage:
 
 ```js
-var diff = require('node-diff-utility');
+var diff = require('diff-utility');
 diff(filename1, filename2)
   .on('diff', function (obj) {
     console.log(obj);
