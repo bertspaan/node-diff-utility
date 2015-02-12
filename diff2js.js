@@ -54,7 +54,7 @@ function diff2js() {
   stream._lastLineIn = 0;
   stream._lastLineOut = 0;
   stream._lastChange = null;
-  stream._reChangeCommand = /(\d+)(?:\,\d+)?([a,c,d])(\d+)(?:\,\d+)?/;
+  stream._reChangeCommand = /^(\d+)(?:\,\d+)?([a,c,d])(\d+)(?:\,\d+)?/;
   stream._changes = {
     a: "add",
     c: "change",
