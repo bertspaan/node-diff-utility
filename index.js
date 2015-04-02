@@ -1,29 +1,32 @@
-var events = require('events'),
-    split = require('split2'),
-    diff2js = require('./diff2js'),
-    spawn = require('child_process').spawn;
+var events = require('events');
+var split = require('split2');
+var diff2js = require('./diff2js');
+var spawn = require('child_process').spawn;
 
 function call(f1, f2) {
-  var diff = new events.EventEmitter(),
-      command = spawn('diff', [f1, f2]);
-
+  var diff = new events.EventEmitter();
+  var command = spawn('diff', [f1, f2]);
   command.stdout
     .pipe(split())
     .pipe(diff2js())
-    .on('data', function (line) {
+    .on('data', function(line) {
       diff.emit('diff', line);
     })
-    .on('end', function () {
+    .on('end', function() {
       diff.emit('end');
     });
 
-  command.on('stderr', function (error) {
+  command.on('stderr', function(error) {
     diff.emit('error', error);
   });
 
-  // command.on('exit', function (code) {
-  //   console.log('child process exited with code ' + code);
-  // });
+  command.on('exit', function(code) {
+    if (code == 2) {
+      // diff error:
+      // http://stackoverflow.com/questions/6971284/what-are-the-error-exit-values-for-diff
+      diff.emit('error', 'diff error');
+    }
+  });
 
   return diff;
 }

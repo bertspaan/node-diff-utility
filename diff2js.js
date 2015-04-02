@@ -1,6 +1,4 @@
-'use strict';
-
-var through = require('through2')
+var through = require('through2');
 
 function transform(line, enc, cb) {
   var match = this._reChangeCommand.exec(line);
@@ -10,28 +8,29 @@ function transform(line, enc, cb) {
     this._lastChange =   this._changes[match[2]];
   } else {
     var first = line.charAt(0);
-    if (first === "<") {
+    if (first === '<') {
 
       push(this, {
         change: this._lastChange,
         line: this._lastLineOut,
-        type: "out",
+        type: 'out',
         str: line.substring(2)
       });
 
       this._lastLineOut += 1;
-    } else if (first === ">") {
+    } else if (first === '>') {
 
       push(this, {
         change: this._lastChange,
         line: this._lastLineIn,
-        type: "in",
+        type: 'in',
         str: line.substring(2)
       });
 
       this._lastLineIn += 1;
     }
   }
+
   cb();
 }
 
@@ -56,10 +55,10 @@ function diff2js() {
   stream._lastChange = null;
   stream._reChangeCommand = /^(\d+)(?:\,\d+)?([a,c,d])(\d+)(?:\,\d+)?/;
   stream._changes = {
-    a: "add",
-    c: "change",
-    d: "delete"
-  }
+    a: 'add',
+    c: 'change',
+    d: 'delete'
+  };
 
   return stream;
 }

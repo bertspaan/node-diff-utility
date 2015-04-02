@@ -1,0 +1,53 @@
+[
+  {
+    "files": ["emptyfile1.txt", "emptyfile2.txt"],
+    "results": []
+  },
+  {
+    "files": ["textfile1.txt", "emptyfile1.txt"],
+    "results": [
+      {"change": "delete", "line": 1, "type": "out", "str": "hallo"},
+      {"change": "delete", "line": 2, "type": "out", "str": "dit"},
+      {"change": "delete", "line": 3, "type": "out", "str": "is"},
+      {"change": "delete", "line": 4, "type": "out", "str": "allemaal"},
+      {"change": "delete", "line": 5, "type": "out", "str": "tekst"}
+    ]
+  },
+  {
+    "files": ["emptyfile1.txt", "textfile1.txt"],
+    "results": [
+      {"change": "add", "line": 1, "type": "in", "str": "hallo"},
+      {"change": "add", "line": 2, "type": "in", "str": "dit"},
+      {"change": "add", "line": 3, "type": "in", "str": "is"},
+      {"change": "add", "line": 4, "type": "in", "str": "allemaal"},
+      {"change": "add", "line": 5, "type": "in", "str": "tekst"}
+    ]
+  },
+  {
+    "files": ["textfile1.txt", "textfile2.txt"],
+    "results": [
+      { "change": "change", "line": 3, "type": "out", "str": "is" },
+      { "change": "change", "line": 3, "type": "in", "str": "is dus" },
+      { "change": "add", "line": 5, "type": "in", "str": "heel" },
+      { "change": "add", "line": 6, "type": "in", "str": "erg" },
+      { "change": "add", "line": 7, "type": "in", "str": "veel" }
+    ]
+  },
+  {
+    "files": ["textfile2.txt", "textfile1.txt"],
+    "results": [
+      {"change": "change", "line": 3, "type": "out", "str": "is dus"},
+      {"change": "change", "line": 3, "type": "in", "str": "is"},
+      {"change": "delete", "line": 5, "type": "out", "str": "heel"},
+      {"change": "delete", "line": 6, "type": "out", "str": "erg"},
+      {"change": "delete", "line": 7, "type": "out", "str": "veel"}
+    ]
+  },
+  {
+    "files": ["textfile2.txt", "textfile3.txt"],
+    "results": [
+      {"change": "delete", "line": 3, "type": "out", "str": "is dus"},
+      {"change": "add", "line": 4, "type": "in", "str": "is dus"}
+    ]
+  }
+]
