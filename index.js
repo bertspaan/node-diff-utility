@@ -3,7 +3,20 @@ var split = require('split2');
 var diff2js = require('./diff2js');
 var spawn = require('child_process').spawn;
 
-function call(f1, f2) {
+var H = require('highland')
+
+function callS(f1, f2) {
+  var cmd = spawn('diff', [f1, f2]);
+  return H(H(cmd.stdout)
+	.splitBy('\n')
+	.pipe(diff2js()))
+}
+
+function call(f1, f2, opts) {
+  // returns a stream when asked to do so
+  if(opts && opts.stream)
+    return callS(f1, f2, opts)
+
   var diff = new events.EventEmitter();
   var command = spawn('diff', [f1, f2]);
   command.stdout

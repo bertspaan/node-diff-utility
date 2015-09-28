@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/bertspaan/node-diff-utility",
   "dependencies": {
+    "highland": "^2.5.1",
     "split2": "^0.2.1",
     "through2": "^0.6.3"
   },
